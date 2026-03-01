@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+:root {
+  /* ── Primary palette ── */
+  --blue:       #1a5fb4;   /* main call-to-action / accent blue  */
+  --blue-dark:  #134a8e;   /* hover state                        */
+  --blue-light: #4a90d9;   /* lighter accent, used on dark bgs   */
+  --blue-muted: rgba(26, 95, 180, 0.09);
+
+  /* ── Page colours ── */
+  --bg:         #ffffff;
+  --bg-alt:     #f0f5fb;   /* very light blue-grey for alt sections */
+  --text:       #1a2638;
+  --text-muted: rgba(26, 38, 56, 0.55);
+
+  /* ── Cards / borders ── */
+  --card-bg:    #ffffff;
+  --border:     rgba(26, 95, 180, 0.15);
+
+  /* ── Tailwind compat: keep "background" / "foreground" names ── */
+  --background: var(--bg);
+  --foreground: var(--text);
+}
+
+@theme inline {
+  --color-background:  var(--bg);
+  --color-foreground:  var(--text);
+  --color-blue:        var(--blue);
+  --color-blue-dark:   var(--blue-dark);
+  --color-blue-light:  var(--blue-light);
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Playfair Display', 'Georgia', ui-serif, serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+/* ─── Navbar ─────────────────────────────────────────── */
+.navbar-fixed {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 0.75rem 1.5rem;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 8px rgba(26, 95, 180, 0.07);
+}
+
+/* ─── Buttons ─────────────────────────────────────────── */
+.btn-primary {
+  display: inline-block;
+  background: var(--blue);
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  background: var(--blue-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(26, 95, 180, 0.28);
+}
+
+.btn-outline-white {
+  display: inline-block;
+  background: transparent;
+  border: 1.5px solid #ffffff;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.btn-outline-white:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ─── Accent text & divider ──────────────────────────── */
+.accent-text  { color: var(--blue); }
+.accent-light { color: var(--blue-light); }
+
+.accent-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue), transparent);
+}
+
+/* Hero versions (visible on dark photo overlay) */
+.hero-accent      { color: #7eb8f7; }
+.hero-accent-text { color: #7eb8f7; text-shadow: 0 0 24px rgba(126,184,247,0.3); }
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #7eb8f7, transparent);
+}
+
+/* ─── Cards ───────────────────────────────────────────── */
+.card-kanzlei {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 6px rgba(26, 95, 180, 0.06);
+}
+.card-kanzlei:hover {
+  border-color: rgba(26, 95, 180, 0.35);
+  box-shadow: 0 4px 20px rgba(26, 95, 180, 0.1);
+}
+
+/* ─── Section backgrounds ─────────────────────────────── */
+.section-alt {
+  background: var(--bg-alt);
+}
+
+.section-dot-bg {
+  background-color: var(--bg);
+  background-image: radial-gradient(circle at center, rgba(26, 95, 180, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
