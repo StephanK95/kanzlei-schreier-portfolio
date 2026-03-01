@@ -168,7 +168,7 @@ export default function Hero() {
           >
             Wir vertreten Ihre Interessen mit Kompetenz, Erfahrung und dem
             persönlichen Engagement, das jeder Fall verdient. Von der ersten
-            Beratung bis zur abschließenden Lösung — an Ihrer Seite.
+            Anfrage bis zur abschließenden Lösung — an Ihrer Seite.
           </motion.p>
 
           {/* CTAs */}
@@ -195,7 +195,7 @@ export default function Hero() {
                 (e.currentTarget as HTMLElement).style.boxShadow = 'none';
               }}
             >
-              Beratungsgespräch vereinbaren
+              Jetzt kontaktieren
             </button>
 
             {/* Secondary: white outline, white text */}

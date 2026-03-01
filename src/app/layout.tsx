@@ -5,11 +5,6 @@ export const metadata: Metadata = {
   title: 'Rechtsanwaltskanzlei Schreier & Kollegen – Dresden',
   description:
     'Ihre zuverlässige Rechtsanwaltskanzlei in Dresden – persönliche Beratung, fundiertes Fachwissen und engagierte Vertretung Ihrer Interessen.',
-  icons: {
-    icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-    ],
-  },
 };
 
 export default function RootLayout({

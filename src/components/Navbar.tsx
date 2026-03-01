@@ -8,7 +8,6 @@ const navLinks = [
   { label: 'Leistungen', href: 'leistungen' },
   { label: 'Über uns', href: 'ueber-uns' },
   { label: 'Kanzlei', href: 'kanzlei' },
-  { label: 'Kontakt', href: 'kontakt' },
 ];
 
 /** Smooth-scrolls to a section id, accounting for the fixed navbar height */
@@ -27,19 +26,36 @@ export default function Navbar() {
   /* Highlight the active section as user scrolls */
   useEffect(() => {
     const ids = navLinks.map((l) => l.href);
+
     const observer = new IntersectionObserver(
       (entries) => {
+        // Clear active when near top of page
+        if (window.scrollY < 80) {
+          setActiveSection('');
+          return;
+        }
         entries.forEach((entry) => {
           if (entry.isIntersecting) setActiveSection(entry.target.id);
         });
       },
       { rootMargin: '-30% 0px -60% 0px' }
     );
+
     ids.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
-    return () => observer.disconnect();
+
+    // Also clear on scroll back to top
+    const onScroll = () => {
+      if (window.scrollY < 80) setActiveSection('');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', onScroll);
+    };
   }, []);
 
   const handleNav = (id: string) => {
@@ -92,20 +108,22 @@ export default function Navbar() {
           })}
           <button
             onClick={() => handleNav('kontakt')}
-            className="inline-flex items-center text-sm font-semibold rounded px-5 py-2 transition-all duration-200 cursor-pointer border-0"
+            className="hidden md:inline-flex items-center text-sm font-semibold rounded px-5 py-2 transition-all duration-200 cursor-pointer border-0"
             style={{ background: '#1a5fb4', color: '#ffffff' }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.background = '#134a8e';
-              (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)';
-              (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 12px rgba(26,95,180,0.3)';
+              const el = e.currentTarget as HTMLElement;
+              el.style.background = '#134a8e';
+              el.style.transform = 'translateY(-1px)';
+              el.style.boxShadow = '0 4px 12px rgba(26,95,180,0.3)';
             }}
             onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.background = '#1a5fb4';
-              (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
-              (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+              const el = e.currentTarget as HTMLElement;
+              el.style.background = '#1a5fb4';
+              el.style.transform = 'translateY(0)';
+              el.style.boxShadow = 'none';
             }}
           >
-            Beratungsgespräch
+            Jetzt kontaktieren
           </button>
         </div>
 
@@ -165,7 +183,7 @@ export default function Navbar() {
                 className="inline-flex items-center justify-center text-sm font-semibold rounded px-5 py-2.5 mt-2 cursor-pointer border-0"
                 style={{ background: '#1a5fb4', color: '#ffffff' }}
               >
-                Beratungsgespräch
+                Jetzt kontaktieren
               </button>
             </div>
           </motion.div>

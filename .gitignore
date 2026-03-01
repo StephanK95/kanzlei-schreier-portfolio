@@ -18,3 +18,4 @@ build/
 
 # Editor
 .cursor/
+.vercel

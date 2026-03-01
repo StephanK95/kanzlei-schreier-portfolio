@@ -256,7 +256,7 @@ function ServiceModal({ service, onClose }: { service: Service; onClose: () => v
             >
               <div>
                 <p className="font-semibold text-sm mb-0.5" style={{ color: '#1a2638' }}>
-                  Jetzt Beratungstermin vereinbaren
+                  Jetzt kontaktieren
                 </p>
                 <p className="text-xs" style={{ color: 'rgba(26,38,56,0.55)' }}>
                   Wir beraten Sie persönlich – vereinbaren Sie noch heute einen Termin.
