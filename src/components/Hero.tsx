@@ -67,15 +67,15 @@ function StatCounter({
     return () => clearTimeout(timer);
   }, [isInView, started, animDelay]);
 
-  const count = useCountUp(target, 2000, started);
+  const count = useCountUp(target, 5500, started);
   const displayValue = format ? format(count) : String(count);
 
   return (
     <div ref={ref}>
-      <p className="text-2xl font-bold" style={{ color: '#ffffff' }}>
+      <p className="text-4xl md:text-5xl font-bold" style={{ color: '#ffffff' }}>
         {displayValue}{suffix}
       </p>
-      <p className="mt-0.5" style={{ color: 'rgba(255,255,255,0.5)' }}>{label}</p>
+      <p className="mt-1 text-sm" style={{ color: 'rgba(255,255,255,0.5)' }}>{label}</p>
     </div>
   );
 }
